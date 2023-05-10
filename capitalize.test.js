@@ -1,17 +1,18 @@
-// import the capitalize function
-const capitalize = require('./capitalize.js');
+import capitalize from './capitalize.js';
 
 describe('capitalize function', () => {
-  it('should capitalize the first letter of a string', () => {
-    expect(capitalize('hello')).toBe('Hello');
-    expect(capitalize('wORLD')).toBe('WORLD');
+  it('should capitalize the first character of a string', () => {
+    expect(capitalize('hello')).toBe('hello');
+    expect(capitalize('this is a test')).toBe('This is a test');
     expect(capitalize('')).toBe('');
+    expect(capitalize('1abc')).toBe('1abc');
   });
 
-  it('should throw an error if input is not a string', () => {
-    expect(() => capitalize(null)).toThrow();
-    expect(() => capitalize(undefined)).toThrow();
-    expect(() => capitalize(123)).toThrow();
-    expect(() => capitalize({})).toThrow();
+  it('should throw an error if argument is not a string', () => {
+    expect(() => capitalize(123)).toThrow(TypeError);
+    expect(() => capitalize([])).toThrow(TypeError);
+    expect(() => capitalize({})).toThrow(TypeError);
+    expect(() => capitalize(null)).toThrow(TypeError);
+    expect(() => capitalize(undefined)).toThrow(TypeError);
   });
 });
